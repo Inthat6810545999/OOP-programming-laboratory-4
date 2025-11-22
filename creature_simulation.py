@@ -68,6 +68,39 @@ class SwimmingCreature(Creature):
             target.hp = 0
         print(f"{target.name} HP is now {target.hp}")
 
+class FireCreature(Creature):
+    def __init__(self, name, hp, attack_power):
+        super().__init__(name, hp, attack_power)
+        self.fire_level = 0  # 0–100
+
+    def emit_fire(self, new_fire_level):
+        if new_fire_level < 0:
+            new_fire_level = 0
+        if new_fire_level > 100:
+            new_fire_level = 100
+
+        self.fire_level = new_fire_level
+        print(f"{self.name} raises fire level to {self.fire_level}!")
+
+    def attack(self, target):
+        if not self.is_alive():
+            print(f"{self.name} cannot attack because it is defeated.")
+            return
+
+        bonus_damage = int(self.attack_power * (self.fire_level / 100))
+
+        total_damage = self.attack_power + bonus_damage
+
+        print(f"{self.name} attacks with flames!")
+        print(f"Base Damage: {self.attack_power}, Fire Bonus: {bonus_damage}")
+        print(f"{self.name} burns {target.name} for {total_damage} total damage!")
+
+        target.hp -= total_damage
+        if target.hp < 0:
+            target.hp = 0
+
+        print(f"{target.name} HP is now {target.hp}")
+
 if __name__ == "__main__":
     print("=== Creature Class Tests ===\n")
 
@@ -128,7 +161,8 @@ if __name__ == "__main__":
     hawk.attack(dummy)
     print(f"Dummy HP should be 32 → Actual: {dummy.hp}")
     dummy.attack(hawk)
-    print()    print("=== Tests Completed ===")
+    print()    
+    print("=== Tests Completed ===")
     print()
 
     print("=== SwimmingCreature Tests ===\n")
