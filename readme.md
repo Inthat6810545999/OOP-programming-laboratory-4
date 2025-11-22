@@ -22,3 +22,35 @@ I begin with a base class (`Creature`) and create additional subclasses on separ
 - View commit history (`git log --graph --all`)
 
 ---
+
+---
+
+## How to Run the Program
+
+1. Open a terminal in the `oop_creature_code` folder  
+2. Run the file:
+
+You will see the test output for:
+
+- Creature  
+- FlyingCreature  
+- SwimmingCreature  
+- FireCreature  
+
+---
+
+## Git Workflow Summary
+
+- `main` branch contains the final merged classes  
+- `flying_creature` branch introduces FlyingCreature  
+- `swimming_creature` branch introduces SwimmingCreature  
+- Merge conflict occurred when merging both branches into main  
+- Conflict resolved manually  
+- `fire_creature` branch adds FireCreature and test code  
+
+---
+
+## Final Submission
+
+I will push this repository to GitHub and submit the link.
+
